@@ -1,0 +1,21 @@
+# Завантажити використовуючи requests структуру даних з
+
+# https://dummyjson.com/todos
+#
+# та вивести на екран не виконані значення todo з тих даних, які до вас прийшли
+
+import requests
+
+from pprint import pprint
+todo_url = "https://dummyjson.com/todos"
+todo_raw = requests.get(todo_url)
+todo_clean = todo_raw.json()
+pprint(todo_clean)
+
+todo = []
+for elem in todo_clean['todos']:
+    if elem['completed'] == False:
+        todo.append(elem['todo'])
+        # print(todo)
+pprint(todo)
+
